@@ -1,5 +1,5 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/KroyGhor-SuperShop/component/connection.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kroyghor-supershop/component/connection.php";
     if(!isset($_SESSION['is_logged_in']) || !$_SESSION['is_logged_in']){
         echo "<script>window.location='{$base_url}login.php'</script>";
         exit;
