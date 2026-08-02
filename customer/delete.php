@@ -1,21 +1,16 @@
 <?php
 require_once '../component/connection.php';
 
-if($_POST){
+if(isset($_GET['id'])){
 
-    $id = $_POST['id'];
-
-    $data = [
-        "category_name" => $_POST['category_name'],
-    ];
-
-    $result = $crud->common_update('categories', $data, ["id" => $id]);
+    $id = $_GET['id'];
+    $result = $crud->common_delete('customers', ["customer_id" => $id]);
 
     if($result['status']){
         $_SESSION['message'] = array(
             "type" => "success",
-            "title" => "Success",
-            "message" => "Category updated successfully."
+            "title" => "Deleted",
+            "message" => "Customer deleted successfully."
         );
     } else {
         $_SESSION['message'] = array(

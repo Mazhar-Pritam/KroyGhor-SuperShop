@@ -1,15 +1,25 @@
 <?php
-// delete.php
-// This page deletes a category
+require_once '../component/connection.php';
 
-include "db_connect.php";
+if(isset($_GET['id'])){
 
-$id = $_GET['id'];
+    $id = $_GET['id'];
 
-$sql = "DELETE FROM categories WHERE id=$id";
-mysqli_query($conn, $sql);
+    $result = $crud->common_delete('categories', ["id" => $id]);
 
-// after deleting, go back to the list
-header("Location: index.php");
-exit;
-?>
+    if($result['status']){
+        $_SESSION['message'] = array(
+            "type" => "success",
+            "title" => "Success",
+            "message" => "Category deleted successfully."
+        );
+    } else {
+        $_SESSION['message'] = array(
+            "type" => "danger",
+            "title" => "Error",
+            "message" => $result['message']
+        );
+    }
+}
+
+echo "<script>window.location='create.php'</script>";

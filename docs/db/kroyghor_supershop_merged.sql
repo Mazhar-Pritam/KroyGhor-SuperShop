@@ -21,6 +21,9 @@ SET time_zone = "+00:00";
 -- Database: `kroyghor_supershop`
 --
 
+CREATE DATABASE IF NOT EXISTS `kroyghor_supershop` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `kroyghor_supershop`;
+
 -- --------------------------------------------------------
 
 --
@@ -33,6 +36,15 @@ CREATE TABLE `categories` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `category_name`, `created_at`, `updated_at`) VALUES
+(1, 'Oils', '2026-08-02 04:16:16', '2026-08-02 04:16:16'),
+(2, 'Nuts', '2026-08-02 04:20:09', '2026-08-02 04:20:09'),
+(3, 'Dry Fruits', '2026-08-02 04:20:34', '2026-08-02 04:20:34');
 
 -- --------------------------------------------------------
 

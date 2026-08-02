@@ -3,19 +3,22 @@ require_once '../component/connection.php';
 
 if($_POST){
 
-    $id = $_POST['id'];
-
     $data = [
-        "category_name" => $_POST['category_name'],
+        "name"            => $_POST['name'],
+        "gender"          => $_POST['gender'],
+        "phone"           => $_POST['phone'],
+        "email"           => $_POST['email'],
+        "address"         => $_POST['address'],
+        "membership_type" => $_POST['membership_type'],
     ];
 
-    $result = $crud->common_update('categories', $data, ["id" => $id]);
+    $result = $crud->common_insert('customers', $data);
 
     if($result['status']){
         $_SESSION['message'] = array(
             "type" => "success",
             "title" => "Success",
-            "message" => "Category updated successfully."
+            "message" => "Customer added successfully."
         );
     } else {
         $_SESSION['message'] = array(
