@@ -17,7 +17,8 @@ class crud_class{
 
 
 
-    public function common_select($table, $columns = "*", $where = [],$where_condition = "AND", $order_by = "",$sort_order = "ASC",$limit = "",$offset = ""){
+    public function common_select($table, $columns = "*", $where = [],$where_condition = "AND", $order_by = "",
+        $sort_order = "ASC",$limit = "",$offset = ""){
         $result=[
             "status"=>false,
             "data"=>[],
@@ -29,7 +30,7 @@ class crud_class{
         if(!empty($where)){
             $where_clauses = [];
             foreach($where as $column => $value){
-                $where_clauses[] = "$column = '$value'";
+                $where_clauses[] = "$column = '" . $this->conn->real_escape_string($value) . "'";
                 //$where_clauses[] = "id='1'"
                 //$where_clauses[] = "name='kamal'"
             }
@@ -107,7 +108,7 @@ class crud_class{
         ];
 
         $columns = implode(", ", array_keys($data));
-        $values = implode("', '", array_values($data));
+        $values = implode("', '", array_map([$this->conn, 'real_escape_string'], array_values($data)));
         $sql = "INSERT INTO $table ($columns) VALUES ('$values')";
         if($this->conn->query($sql)){
             $result["status"] = true;
@@ -139,7 +140,7 @@ class crud_class{
         if(!empty($where)){
             $where_clauses = [];
             foreach($where as $column => $value){
-                $where_clauses[] = "$column = '$value'";
+                $where_clauses[] = "$column = '" . $this->conn->real_escape_string($value) . "'";
             }
             $sql .= " WHERE " . implode(" $where_condition ", $where_clauses);
         }
@@ -165,7 +166,7 @@ class crud_class{
         if(!empty($where)){
             $where_clauses = [];
             foreach($where as $column => $value){
-                $where_clauses[] = "$column = '$value'";
+                $where_clauses[] = "$column = '" . $this->conn->real_escape_string($value) . "'";
             }
             $sql .= " WHERE " . implode(" $where_condition ", $where_clauses);
         }
