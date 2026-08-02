@@ -1,16 +1,20 @@
 <?php
 require_once '../component/connection.php';
 
-if(isset($_GET['id'])){
+if($_POST){
 
-    $id = $_GET['id'];
-    $result = $crud->common_delete('products', ["product_id" => $id]);
+    $data = [
+        "name"        => $_POST['name'],
+        "description" => $_POST['description'],
+    ];
+
+    $result = $crud->common_insert('categories', $data);
 
     if($result['status']){
         $_SESSION['message'] = array(
             "type" => "success",
-            "title" => "Deleted",
-            "message" => "Product deleted successfully."
+            "title" => "Success",
+            "message" => "Category added successfully."
         );
     } else {
         $_SESSION['message'] = array(

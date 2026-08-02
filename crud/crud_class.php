@@ -30,7 +30,7 @@ class crud_class{
         if(!empty($where)){
             $where_clauses = [];
             foreach($where as $column => $value){
-                $where_clauses[] = "$table" . "." . "$column = '" . $this->conn->real_escape_string($value) . "'";
+                $where_clauses[] = "$column = '" . $this->conn->real_escape_string($value) . "'";
                 //$where_clauses[] = "id='1'"
                 //$where_clauses[] = "name='kamal'"
             }
@@ -78,24 +78,14 @@ class crud_class{
         }
     }
 
-    public function common_query($sql,$limit = "",$offset = ""){
+    public function common_query($query){
         $result=[
             "status"=>false,
             "data"=>[],
             "message"=>""
         ];
 
-        if(!empty($limit)){
-            $sql .= " LIMIT $limit";
-            if(!empty($offset)){
-                $sql .= " OFFSET $offset";
-            }
-
-            // "SELECT * FROM users WHERE id='1' AND name='kamal' ORDER BY name ASC LIMIT 10 OFFSET 5"
-        }
-
-        $rs = $this->conn->query($sql);
-
+        $rs = $this->conn->query($query);
         if($rs->num_rows > 0){
             $result["status"] = true;
             $result["message"] = "Records found";
