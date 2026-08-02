@@ -297,6 +297,12 @@
                                
                                 <li><a href="<?php echo $base_url; ?>customer/create.php" class="sidebar-link"><i class=" fa-solid fa-users"></i><p>Customer</p></a></li>
                                 <!-- Widgets -->
+                                 <li>
+                                    <a href="product/create.php">
+                                        <span class="pcoded-micon"><i class="feather icon-box"></i></span>
+                                        <span class="pcoded-mtext">Product</span>
+                                    </a>
+                                </li>
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
@@ -304,21 +310,9 @@
                                         <span class="pcoded-badge badge bg-danger">100+</span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class="">
-                                            <a href="widget-statistic.html">
-                                                <span class="pcoded-mtext">Statistic</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="widget-data.html">
-                                                <span class="pcoded-mtext">Data</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="widget-chart.html">
-                                                <span class="pcoded-mtext">Chart Widget</span>
-                                            </a>
-                                        </li>
+                                       
+                                       
+                                        
                                     </ul>
                                 </li>
                             </ul>
