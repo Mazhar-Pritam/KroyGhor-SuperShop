@@ -6,7 +6,7 @@
 $host = "localhost";
 $username = "root";       // your MySQL username
 $password = "";           // your MySQL password
-$database = "kroyghor-supershop"; // change this to your database name
+$database = "kroyghor_supershop"; // change this to your database name
 
 // connect to mysql
 $conn = mysqli_connect($host, $username, $password, $database);

@@ -5,7 +5,7 @@ class crud_class{
     private $host = "localhost";
     private $username = "root";
     private $password = "";
-    private $database = "kroyghor-supershop";
+    private $database = "kroyghor_supershop";
     private $conn;
 
     public function __construct(){
