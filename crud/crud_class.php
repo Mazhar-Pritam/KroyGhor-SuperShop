@@ -117,7 +117,7 @@ class crud_class{
         } else {
             $sql .= $deleted_condition;
         }
-        }
+        
 
         if(!empty($limit)){
             $sql .= " LIMIT $limit";
