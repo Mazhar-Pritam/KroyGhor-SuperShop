@@ -1,3 +1,4 @@
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
    <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
@@ -184,8 +185,8 @@
         </li>
         <li class="">
             <a href="<?php echo $base_url; ?>supplier/list.php">
-                <span class="pcoded-micon"><i class="feather icon-truck"></i></span>
-                <span class="pcoded-mtext">Supplier</span>
+                <span class="pcoded-micon"><i class="feather icon-briefcase"></i></span>
+                <span class="pcoded-mtext"></i>Supplier</span>
             </a>
         </li>
     </ul>
