@@ -1,4 +1,5 @@
 <?php require_once 'component/header_auth.php'; ?>
+
     <div id="pcoded" class="pcoded load-height">
         
         <section class="login-block with-header">

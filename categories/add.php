@@ -4,7 +4,8 @@ require_once '../component/connection.php';
 if($_POST){
 
     $data = [
-        "category_name" => $_POST['category_name'],
+        "name"        => $_POST['name'],
+        "description" => $_POST['description'],
     ];
 
     $result = $crud->common_insert('categories', $data);
@@ -24,4 +25,4 @@ if($_POST){
     }
 }
 
-echo "<script>window.location='create.php'</script>";
+echo "<script>window.location='list.php'</script>";
