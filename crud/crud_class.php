@@ -35,7 +35,7 @@ class crud_class{
 
             $sql .= " WHERE " . implode(" $where_condition ", $where_clauses);
             $sql .= " AND deleted_at IS NULL";
-            // "SELECT * FROM users WHERE id='1' AND name='kamal'" and deleted_at IS NULL
+            // "SELECT * FROM users WHERE id='1' AND name='kamal' AND deleted_at IS NULL"
         }else{
             $sql .= " WHERE deleted_at IS NULL";
         }
@@ -56,6 +56,12 @@ class crud_class{
         }
 
         $rs = $this->conn->query($sql);
+
+        if($rs === false){
+            $result["message"] = "Query Error: " . $this->conn->error;
+            return $result;
+        }
+
         if($rs->num_rows > 0){
             $result["status"] = true;
             $result["message"] = "Records found";
@@ -70,8 +76,13 @@ class crud_class{
     }
 
     public function number_of_records($table){
-        $sql = "SELECT COUNT(*) as total FROM $table";
+        $sql = "SELECT COUNT(*) as total FROM $table WHERE deleted_at IS NULL";
         $rs = $this->conn->query($sql);
+
+        if($rs === false){
+            return 0;
+        }
+
         if($rs->num_rows > 0){
             $row = $rs->fetch_object();
             return $row->total;
@@ -90,11 +101,22 @@ class crud_class{
         //* find table name from query */
         $table = $this->getMainTable($sql);
 
-        /* check if query has WHERE clause */
+        /* build the deleted_at condition */
         if(stripos($sql, 'WHERE') !== false){
-            $sql .= " AND $table.deleted_at IS NULL";
+            $deleted_condition = " AND $table.deleted_at IS NULL";
         }else{
-            $sql .= " WHERE $table.deleted_at IS NULL";
+            $deleted_condition = " WHERE $table.deleted_at IS NULL";
+        }
+
+        /* insert the condition BEFORE ORDER BY / GROUP BY / LIMIT if the caller
+           already included one of those in the raw $sql, otherwise append at the end.
+           This avoids producing invalid SQL like "... ORDER BY id DESC AND deleted_at IS NULL" */
+        if(preg_match('/\s+(ORDER\s+BY|GROUP\s+BY|LIMIT)\s+/i', $sql, $matches, PREG_OFFSET_CAPTURE)){
+            $pos = $matches[0][1];
+            $sql = substr($sql, 0, $pos) . $deleted_condition . substr($sql, $pos);
+        } else {
+            $sql .= $deleted_condition;
+        }
         }
 
         if(!empty($limit)){
@@ -108,6 +130,10 @@ class crud_class{
 
         $rs = $this->conn->query($sql);
 
+        if($rs === false){
+            $result["message"] = "Query Error: " . $this->conn->error;
+            return $result;
+        }
         if($rs->num_rows > 0){
             $result["status"] = true;
             $result["message"] = "Records found";
@@ -182,7 +208,7 @@ class crud_class{
         $sql = "UPDATE $table SET ";
         $set_clauses = [];
         foreach($data as $column => $value){
-            $set_clauses[] = "$column = '$value'";
+            $set_clauses[] = "$column = '" . $this->conn->real_escape_string($value) . "'";
         }
         $sql .= implode(", ", $set_clauses);
 
@@ -236,4 +262,3 @@ class crud_class{
         $this->conn->close();
     }
 }
-

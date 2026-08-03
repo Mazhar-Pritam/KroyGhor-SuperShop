@@ -1,3 +1,4 @@
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
    <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
@@ -150,7 +151,6 @@
                 <div class="pcoded-wrapper">
                     <nav class="pcoded-navbar">
                         <div class="pcoded-inner-navbar main-menu">
-                            
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="">
                                     <a href="<?php echo $base_url; ?>dashboard.php">
@@ -180,9 +180,13 @@
                                                 <span class="pcoded-mtext">Categories</span>
                                             </a>
                                         </li>
-                                        <
                                     </ul>
                                 </li>
+                                <li class="">
+                                    <a href="<?php echo $base_url; ?>supplier/list.php">
+                                        <span class="pcoded-micon"><i class="feather icon-briefcase"></i></span>
+                                        <span class="pcoded-mtext">Supplier</span>
+                                    </a>
+                                </li>
                             </ul>
-                        </div>
                     </nav>
