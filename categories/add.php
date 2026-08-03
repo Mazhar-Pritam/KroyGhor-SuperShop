@@ -25,4 +25,4 @@ if($_POST){
     }
 }
 
-echo "<script>window.location='create.php'</script>";
+echo "<script>window.location='list.php'</script>";

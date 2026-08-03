@@ -10,8 +10,7 @@
                             <i class="feather icon-menu"></i>
                         </a>
                         <a href="index.html">
-                           <img src="<?php echo $base_url; ?>assets/images/loogo.png" 
-     alt="Theme-Logo" style="width:238px; height:57px;" />
+                           <img src="<?php echo $base_url; ?>assets/images/loogo.png" alt="Theme-Logo" style="width:238px; height:57px;" />
                         </a>
                         <a class="mobile-options">
                             <i class="feather icon-more-horizontal"></i>
@@ -36,74 +35,7 @@
                             </li>
                         </ul>
                         <ul class="nav-right">
-                            <li class="header-notification">
-                                <div class="dropdown-primary dropdown">
-                                    <div class="dropdown-toggle" data-bs-toggle="dropdown">
-                                        <i class="feather icon-bell"></i>
-                                        <span class="badge bg-c-pink">5</span>
-                                    </div>
-                                    <ul class="show-notification notification-view dropdown-menu"
-                                        data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                        <li>
-                                            <h6>Notifications</h6>
-                                            <span class="badge bg-danger">New</span>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex">
-                                                <div class="flex-shrink-0">
-                                                <img class="d-flex align-self-center img-radius"
-                                                    src="/assets/images/avatar-4.jpg"
-                                                    alt="Generic placeholder image">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h5 class="notification-user">John Doe</h5>
-                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
-                                                        elit.</p>
-                                                    <span class="notification-time">30 minutes ago</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex">
-                                                <div class="flex-shrink-0">
-                                                    <img class="d-flex align-self-center img-radius"
-                                                        src="/assets/images/avatar-3.jpg"
-                                                        alt="Generic placeholder image">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h5 class="notification-user">Joseph William</h5>
-                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
-                                                        elit.</p>
-                                                    <span class="notification-time">30 minutes ago</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex">
-                                                <div class="flex-shrink-0">
-                                                    <img class="d-flex align-self-center img-radius"
-                                                        src="/assets/images/avatar-4.jpg"
-                                                        alt="Generic placeholder image">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h5 class="notification-user">Sara Soudein</h5>
-                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
-                                                        elit.</p>
-                                                    <span class="notification-time">30 minutes ago</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="header-notification">
-                                <div class="dropdown-primary dropdown">
-                                    <div class="displayChatbox dropdown-toggle" data-bs-toggle="dropdown">
-                                        <i class="feather icon-message-square"></i>
-                                        <span class="badge bg-c-green">3</span>
-                                    </div>
-                                </div>
-                            </li>
+                            
                             <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-bs-toggle="dropdown">
@@ -163,65 +95,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="main-friend-list">
-                                <div class="d-flex userlist-box" data-id="1" data-status="online"
-                                    data-username="Josephin Doe" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    title="Josephin Doe">
-                                    <a class="flex-shrink-0 me-3" href="#!">
-                                        <img class="rounded img-radius img-radius"
-                                            src="/assets/images/avatar-3.jpg" alt="Generic placeholder image ">
-                                        <div class="live-status bg-success"></div>
-                                    </a>
-                                    <div class="flex-grow-1">
-                                        <div class="f-13 chat-header">Josephin Doe</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex userlist-box" data-id="2" data-status="online"
-                                    data-username="Lary Doe" data-bs-toggle="tooltip" data-bs-placement="left"
-                                    title="Lary Doe">
-                                    <a class="flex-shrink-0 me-3" href="#!">
-                                        <img class="rounded img-radius" src="/assets/images/avatar-2.jpg"
-                                            alt="Generic placeholder image">
-                                        <div class="live-status bg-success"></div>
-                                    </a>
-                                    <div class="flex-grow-1">
-                                        <div class="f-13 chat-header">Lary Doe</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex userlist-box" data-id="3" data-status="online" data-username="Alice"
-                                    data-bs-toggle="tooltip" data-bs-placement="left" title="Alice">
-                                    <a class="flex-shrink-0 me-3" href="#!">
-                                        <img class="rounded img-radius" src="/assets/images/avatar-4.jpg"
-                                            alt="Generic placeholder image">
-                                        <div class="live-status bg-success"></div>
-                                    </a>
-                                    <div class="flex-grow-1">
-                                        <div class="f-13 chat-header">Alice</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex userlist-box" data-id="4" data-status="online" data-username="Alia"
-                                    data-bs-toggle="tooltip" data-bs-placement="left" title="Alia">
-                                    <a class="flex-shrink-0 me-3" href="#!">
-                                        <img class="rounded img-radius" src="/assets/images/avatar-3.jpg"
-                                            alt="Generic placeholder image">
-                                        <div class="live-status bg-success"></div>
-                                    </a>
-                                    <div class="flex-grow-1">
-                                        <div class="f-13 chat-header">Alia</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex userlist-box" data-id="5" data-status="online" data-username="Suzen"
-                                    data-bs-toggle="tooltip" data-bs-placement="left" title="Suzen">
-                                    <a class="flex-shrink-0 me-3" href="#!">
-                                        <img class="rounded img-radius" src="/assets/images/avatar-2.jpg"
-                                            alt="Generic placeholder image">
-                                        <div class="live-status bg-success"></div>
-                                    </a>
-                                    <div class="flex-grow-1">
-                                        <div class="f-13 chat-header">Suzen</div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -278,20 +151,38 @@
                     <nav class="pcoded-navbar">
                         <div class="pcoded-inner-navbar main-menu">
                             
-                            
                             <ul class="pcoded-item pcoded-left-item">
-                                <!-- <li class="pcoded-hasmenu active pcoded-trigger"> -->
-                                    
-                                        
-                                        <li><a href="<?php echo $base_url; ?>dashboard.php" class="sidebar-link"><i class="feather icon-home"></i><p>Dashboard</p></a></li>
-
-                                        <li><a href="<?php echo $base_url; ?>customer/create.php" class="sidebar-link"><i class="feather icon-users"></i><p>Customer</p></a></li>
-
-                                        <!-- <li><a href="<?php echo $base_url; ?>product/create.php" class="sidebar-link"><i class="feather icon-package"></i><p>Product</p></a></li> -->
-
-                                         <li><a href="<?php echo $base_url; ?>categories/create.php" class="sidebar-link"><i class="feather icon-tag"></i><p>Categories</p></a></li>
-                                
+                                <li class="">
+                                    <a href="<?php echo $base_url; ?>dashboard.php">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="<?php echo $base_url; ?>customer/list.php">
+                                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>
+                                        <span class="pcoded-mtext">Customer</span>
+                                    </a>
+                                </li>
+                                <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-package"></i></span>
+                                        <span class="pcoded-mtext">Product</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="<?php echo $base_url; ?>product/list.php">
+                                                <span class="pcoded-mtext">Product</span>
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="<?php echo $base_url; ?>categories/list.php">
+                                                <span class="pcoded-mtext">Categories</span>
+                                            </a>
+                                        </li>
+                                        <
+                                    </ul>
+                                </li>
                             </ul>
-
-                            
+                        </div>
                     </nav>
