@@ -151,45 +151,48 @@
                 <div class="pcoded-wrapper">
                     <nav class="pcoded-navbar">
                         <div class="pcoded-inner-navbar main-menu">
-    
-    <ul class="pcoded-item pcoded-left-item">
-        <li class="">
-            <a href="<?php echo $base_url; ?>dashboard.php">
-                <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                <span class="pcoded-mtext">Dashboard</span>
-            </a>
-        </li>
-        <li class="">
-            <a href="<?php echo $base_url; ?>customer/list.php">
-                <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                <span class="pcoded-mtext">Customer</span>
-            </a>
-        </li>
-        <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
-            <a href="javascript:void(0)">
-                <span class="pcoded-micon"><i class="feather icon-package"></i></span>
-                <span class="pcoded-mtext">Product</span>
-            </a>
-            <ul class="pcoded-submenu">
-                <li class="">
-                    <a href="<?php echo $base_url; ?>product/list.php">
-                        <span class="pcoded-mtext">Product</span>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="<?php echo $base_url; ?>categories/list.php">
-                        <span class="pcoded-mtext">Categories</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="">
-            <a href="<?php echo $base_url; ?>supplier/list.php">
-                <span class="pcoded-micon"><i class="feather icon-briefcase"></i></span>
-                <span class="pcoded-mtext"></i>Supplier</span>
-            </a>
-        </li>
-    </ul>
-    
-</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="">
+                                    <a href="<?php echo $base_url; ?>dashboard.php">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="<?php echo $base_url; ?>customer/list.php">
+                                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>
+                                        <span class="pcoded-mtext">Customer</span>
+                                    </a>
+                                </li>
+                                <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-package"></i></span>
+                                        <span class="pcoded-mtext">Product</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="<?php echo $base_url; ?>product/list.php">
+                                                <span class="pcoded-mtext">Product</span>
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="<?php echo $base_url; ?>categories/list.php">
+                                                <span class="pcoded-mtext">Categories</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <a href="<?php echo $base_url; ?>supplier/list.php">
+                                        <span class="pcoded-micon"><i class="feather icon-briefcase"></i></span>
+                                        <span class="pcoded-mtext">Supplier</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="<?php echo $base_url; ?>purchase/list.php">
+                                        <span class="pcoded-micon"><i class="feather icon-briefcase"></i></span>
+                                        <span class="pcoded-mtext">Purchase</span>
+                                    </a>
+                                </li>
+                            </ul>
                     </nav>

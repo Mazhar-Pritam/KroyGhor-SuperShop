@@ -117,6 +117,7 @@ class crud_class{
         } else {
             $sql .= $deleted_condition;
         }
+        
 
         if(!empty($limit)){
             $sql .= " LIMIT $limit";
@@ -133,7 +134,6 @@ class crud_class{
             $result["message"] = "Query Error: " . $this->conn->error;
             return $result;
         }
-
         if($rs->num_rows > 0){
             $result["status"] = true;
             $result["message"] = "Records found";
