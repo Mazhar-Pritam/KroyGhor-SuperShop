@@ -4,7 +4,7 @@ require_once '../component/connection.php';
 if(isset($_GET['id'])){
 
     $id = $_GET['id'];
-    $result = $crud->common_update('warehouses', ["deleted_at" => date('Y-m-d H:i:s')], ["warehouse_id" => $id]);
+    $result = $crud->common_update('warehouses', ["deleted_at" => date('Y-m-d H:i:s')], ["id" => $id]);
 
     if($result['status']){
         $_SESSION['message'] = array(

@@ -63,14 +63,14 @@
                                                             <td class="text-end">
                                                                 <button type="button" class="btn btn-sm btn-warning"
                                                                     data-bs-toggle="modal" data-bs-target="#editWarehouseModal"
-                                                                    data-id="<?php echo $wh->warehouse_id; ?>"
+                                                                    data-id="<?php echo $wh->id; ?>"
                                                                     data-name="<?php echo htmlspecialchars($wh->warehouse_name); ?>"
                                                                     data-location="<?php echo htmlspecialchars($wh->location); ?>"
                                                                     data-manager="<?php echo htmlspecialchars($wh->manager_name); ?>"
                                                                     onclick="fillEditForm(this)">
                                                                     <i class="feather icon-edit"></i>
                                                                 </button>
-                                                                <a href="delete.php?id=<?php echo $wh->warehouse_id; ?>"
+                                                                <a href="delete.php?id=<?php echo $wh->id; ?>"
                                                                     class="btn btn-sm btn-danger"
                                                                     onclick="return confirm('Delete this warehouse?');">
                                                                     <i class="feather icon-trash-2"></i>
