@@ -194,5 +194,11 @@
                                         <span class="pcoded-mtext">Purchase</span>
                                     </a>
                                 </li>
+                                <li class="">
+                                    <a href="<?php echo $base_url; ?>warehouse/list.php">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Warehouse</span>
+                                    </a>
+                                </li>
                             </ul>
                     </nav>
