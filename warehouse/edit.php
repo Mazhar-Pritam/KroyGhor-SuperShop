@@ -11,7 +11,7 @@ if($_POST){
         "manager_name"   => $_POST['manager_name'],
     ];
 
-    $result = $crud->common_update('warehouses', $data, ["warehouse_id" => $id]);
+    $result = $crud->common_update('warehouses', $data, ["id" => $id]);
 
     if($result['status']){
         $_SESSION['message'] = array(
