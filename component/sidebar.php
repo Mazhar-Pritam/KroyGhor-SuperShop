@@ -188,5 +188,11 @@
                                         <span class="pcoded-mtext">Supplier</span>
                                     </a>
                                 </li>
+                                <li class="">
+                                    <a href="<?php echo $base_url; ?>purchase/list.php">
+                                        <span class="pcoded-micon"><i class="feather icon-briefcase"></i></span>
+                                        <span class="pcoded-mtext">Purchase</span>
+                                    </a>
+                                </li>
                             </ul>
                     </nav>

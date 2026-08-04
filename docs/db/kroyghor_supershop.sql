@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2026 at 09:25 AM
+-- Generation Time: Aug 04, 2026 at 06:35 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -123,9 +123,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `supplier_id`, `product_name`, `brand`, `purchase_price`, `selling_price`, `barcode`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
-(1, 1, 1, 'Pumkin Oil', 'Tibbat', '220.00', '250.00', '142568', '2026-08-02 04:16:16', NULL, NULL, NULL, NULL),
-(2, 1, 2, 'akrot', 'Tibbat', '750.00', '810.00', '254587', '2026-08-02 04:20:09', NULL, NULL, NULL, NULL),
-(3, 3, 3, 'Dumur', 'Tibbat', '1100.00', '1250.00', '145898', '2026-08-02 04:20:34', NULL, NULL, NULL, NULL),
+(1, 1, 1, 'Pumkin Oil', 'Tibbat', '100.00', '250.00', '142568', '2026-08-02 04:16:16', NULL, NULL, NULL, NULL),
+(2, 1, 1, 'akrot', 'Tibbat', '750.00', '810.00', '254587', '2026-08-02 04:20:09', NULL, NULL, NULL, NULL),
+(3, 1, 1, 'Dumur', 'Tibbat', '1100.00', '1250.00', '145898', '2026-08-02 04:20:34', NULL, NULL, NULL, NULL),
 (6, 1, 1, 'KK', 'kk', '500.00', '500.00', 'asdjfg', '2026-08-03 03:08:06', NULL, NULL, 1, NULL);
 
 -- --------------------------------------------------------
@@ -137,9 +137,13 @@ INSERT INTO `products` (`id`, `category_id`, `supplier_id`, `product_name`, `bra
 CREATE TABLE `purchases` (
   `id` int(11) NOT NULL,
   `supplier_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
   `purchase_date` date NOT NULL,
   `total_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `discount_amount` decimal(10,2) DEFAULT NULL,
+  `discount_type` int(11) DEFAULT NULL,
+  `vat` decimal(10,2) DEFAULT NULL,
+  `grand_total` decimal(10,2) DEFAULT NULL,
+  `ref` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1 COMMENT ' 1 Received, 0 Pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -255,13 +259,6 @@ CREATE TABLE `stock_transfers` (
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `stock_transfers`
---
-
-INSERT INTO `stock_transfers` (`id`, `product_id`, `quantity`, `transfer_date`, `sale_id`, `purchase_id`, `sale_return_id`, `purchase_return_id`, `status`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
-(1, 6, 50, '0000-00-00', NULL, NULL, NULL, NULL, 1, '2026-08-03 03:08:06', '2026-08-03 07:08:06', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -434,13 +431,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `purchase_details`
 --
 ALTER TABLE `purchase_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -464,7 +461,7 @@ ALTER TABLE `sale_details`
 -- AUTO_INCREMENT for table `stock_transfers`
 --
 ALTER TABLE `stock_transfers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
