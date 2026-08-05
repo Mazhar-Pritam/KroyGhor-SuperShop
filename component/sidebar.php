@@ -200,5 +200,11 @@
                                         <span class="pcoded-mtext">Warehouse</span>
                                     </a>
                                 </li>
+                                <li class="">
+                                    <a href="<?php echo $base_url; ?>users/list.php">
+                                        <span class="pcoded-micon"><i class="feather icon-user"></i></span>
+                                        <span class="pcoded-mtext">Users</span>
+                                    </a>
+                                </li>
                             </ul>
                     </nav>
