@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2026 at 06:35 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Aug 05, 2026 at 08:50 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`categories_id`, `name`, `description`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
-(1, 'Grocery item', 'Daily household items', '2026-08-02 23:34:06', '2026-08-02 23:34:06', NULL, NULL, NULL);
+(1, 'Grocery item', 'Daily household items', '2026-08-02 23:34:06', '2026-08-02 23:34:06', NULL, NULL, NULL),
+(4, 'CatFoods', 'Foods for cat', '2026-08-04 18:59:28', '2026-08-04 18:59:28', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -106,6 +107,7 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `category_id` int(11) DEFAULT NULL,
   `supplier_id` int(11) DEFAULT NULL,
+  `warehouse_id` int(11) DEFAULT NULL,
   `product_name` varchar(100) DEFAULT NULL,
   `brand` varchar(100) DEFAULT NULL,
   `purchase_price` decimal(10,2) DEFAULT NULL,
@@ -122,11 +124,13 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `category_id`, `supplier_id`, `product_name`, `brand`, `purchase_price`, `selling_price`, `barcode`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
-(1, 1, 1, 'Pumkin Oil', 'Tibbat', '100.00', '250.00', '142568', '2026-08-02 04:16:16', NULL, NULL, NULL, NULL),
-(2, 1, 1, 'akrot', 'Tibbat', '750.00', '810.00', '254587', '2026-08-02 04:20:09', NULL, NULL, NULL, NULL),
-(3, 1, 1, 'Dumur', 'Tibbat', '1100.00', '1250.00', '145898', '2026-08-02 04:20:34', NULL, NULL, NULL, NULL),
-(6, 1, 1, 'KK', 'kk', '500.00', '500.00', 'asdjfg', '2026-08-03 03:08:06', NULL, NULL, 1, NULL);
+INSERT INTO `products` (`id`, `category_id`, `supplier_id`, `warehouse_id`, `product_name`, `brand`, `purchase_price`, `selling_price`, `barcode`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
+(1, 1, 1, NULL, 'Pumkin Oil', 'Tibbat', 100.00, 250.00, '142568', '2026-08-02 04:16:16', NULL, NULL, NULL, NULL),
+(2, 1, 1, NULL, 'akrot', 'Tibbat', 750.00, 810.00, '254587', '2026-08-02 04:20:09', NULL, NULL, NULL, NULL),
+(3, 1, 1, NULL, 'Dumur', 'Tibbat', 1100.00, 1250.00, '145898', '2026-08-02 04:20:34', NULL, NULL, NULL, NULL),
+(6, 1, 1, NULL, 'KK', 'kk', 500.00, 500.00, 'asdjfg', '2026-08-03 03:08:06', NULL, NULL, 1, NULL),
+(7, 1, 0, NULL, 'Facewash', 'Garnier', 452.00, 658.00, 'None', '2026-08-04 14:58:48', NULL, NULL, 1, NULL),
+(8, 1, 0, NULL, 'potato', 'local', 4.00, 25.00, '', '2026-08-04 15:00:10', NULL, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -137,6 +141,7 @@ INSERT INTO `products` (`id`, `category_id`, `supplier_id`, `product_name`, `bra
 CREATE TABLE `purchases` (
   `id` int(11) NOT NULL,
   `supplier_id` int(11) NOT NULL,
+  `warehouse_id` int(11) DEFAULT NULL,
   `purchase_date` date NOT NULL,
   `total_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `discount_amount` decimal(10,2) DEFAULT NULL,
@@ -184,16 +189,17 @@ CREATE TABLE `roles` (
   `access` varchar(255) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`id`, `role_name`, `access`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'Full access to all system features', 1, '2026-07-25 05:51:10', '2026-07-25 05:51:10'),
-(2, 'Admin', 'Manage users, settings, and reports', 1, '2026-07-25 05:51:10', '2026-07-25 05:51:10');
+INSERT INTO `roles` (`id`, `role_name`, `access`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Super Admin', 'Full access to all system features', 1, '2026-07-25 05:51:10', '2026-07-25 05:51:10', NULL),
+(2, 'Admin', 'Manage users, settings, and reports', 1, '2026-07-25 05:51:10', '2026-07-25 05:51:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -205,6 +211,7 @@ CREATE TABLE `sales` (
   `sale_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `warehouse_id` int(11) DEFAULT NULL,
   `sale_date` date NOT NULL,
   `total_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `discount` decimal(10,2) NOT NULL DEFAULT 0.00,
@@ -246,6 +253,7 @@ CREATE TABLE `sale_details` (
 CREATE TABLE `stock_transfers` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
+  `warehouse_id` int(11) DEFAULT NULL,
   `quantity` int(11) NOT NULL,
   `transfer_date` date NOT NULL,
   `sale_id` int(11) DEFAULT NULL,
@@ -259,6 +267,14 @@ CREATE TABLE `stock_transfers` (
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `stock_transfers`
+--
+
+INSERT INTO `stock_transfers` (`id`, `product_id`, `warehouse_id`, `quantity`, `transfer_date`, `sale_id`, `purchase_id`, `sale_return_id`, `purchase_return_id`, `status`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
+(21, 7, NULL, 400, '0000-00-00', NULL, NULL, NULL, NULL, 1, '2026-08-04 14:58:48', '2026-08-04 18:58:48', NULL, 1, NULL),
+(22, 8, NULL, 200, '0000-00-00', NULL, NULL, NULL, NULL, 1, '2026-08-04 15:00:10', '2026-08-04 19:00:10', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -316,7 +332,37 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `full_name`, `email`, `password`, `phone`, `status`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
-(1, 1, 'Md. Ibrahim', 'jamal@yahoo.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '015', 'Active', '2026-07-26 06:47:39', '2026-07-26 06:47:57', NULL, NULL, NULL);
+(1, 1, 'jamal', 'jamal@yahoo.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '015', 'Active', '2026-07-26 06:47:39', '2026-08-05 14:48:06', NULL, NULL, 1),
+(2, 1, 'M', 'mp@gmail.com', '$2y$10$chMNxXJ5nFtHSM4hSeZ88OfUlhHIeUY2z4BJCUayzbCqMUfim75TC', '018', 'Active', '2026-08-05 14:47:34', '2026-08-05 14:48:29', NULL, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `warehouses`
+--
+
+CREATE TABLE `warehouses` (
+  `id` int(11) NOT NULL,
+  `warehouse_name` varchar(100) NOT NULL,
+  `location` text DEFAULT NULL,
+  `manager_name` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `warehouses`
+--
+
+INSERT INTO `warehouses` (`id`, `warehouse_name`, `location`, `manager_name`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
+(1, 'Main Warehouse', 'Agrabad, Chattogram', 'Md. Ibrahim', '2026-08-04 18:46:21', '2026-08-04 18:50:09', '2026-08-04 14:50:09', 1, 1),
+(2, 'Branch Warehouse', 'GEC Circle, Chattogram', 'Kamal Hossain', '2026-08-04 18:46:21', '2026-08-04 18:50:06', '2026-08-04 14:50:06', 1, 1),
+(3, 'Summit', 'Agrabad', 'Raihan', '2026-08-04 18:50:25', '2026-08-04 18:50:25', NULL, NULL, NULL),
+(4, 'Rootya', 'GEC', 'Mohibulllah', '2026-08-04 18:50:49', '2026-08-04 18:51:02', NULL, NULL, NULL),
+(5, 'Dew', 'Agrabad', 'Mohiner Ghora', '2026-08-05 17:19:08', '2026-08-05 17:19:08', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -347,13 +393,15 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `barcode` (`barcode`),
   ADD KEY `category_id` (`category_id`),
-  ADD KEY `supplier_id` (`supplier_id`);
+  ADD KEY `supplier_id` (`supplier_id`),
+  ADD KEY `warehouse_id` (`warehouse_id`);
 
 --
 -- Indexes for table `purchases`
 --
 ALTER TABLE `purchases`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `warehouse_id` (`warehouse_id`);
 
 --
 -- Indexes for table `purchase_details`
@@ -372,7 +420,8 @@ ALTER TABLE `roles`
 -- Indexes for table `sales`
 --
 ALTER TABLE `sales`
-  ADD PRIMARY KEY (`sale_id`);
+  ADD PRIMARY KEY (`sale_id`),
+  ADD KEY `warehouse_id` (`warehouse_id`);
 
 --
 -- Indexes for table `sale_details`
@@ -384,7 +433,8 @@ ALTER TABLE `sale_details`
 -- Indexes for table `stock_transfers`
 --
 ALTER TABLE `stock_transfers`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `warehouse_id` (`warehouse_id`);
 
 --
 -- Indexes for table `suppliers`
@@ -400,6 +450,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indexes for table `warehouses`
+--
+ALTER TABLE `warehouses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -407,7 +463,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `categories_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `categories_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -425,7 +481,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `purchases`
@@ -461,7 +517,7 @@ ALTER TABLE `sale_details`
 -- AUTO_INCREMENT for table `stock_transfers`
 --
 ALTER TABLE `stock_transfers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -473,7 +529,41 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `warehouses`
+--
+ALTER TABLE `warehouses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_warehouse_fk` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouses` (`id`);
+
+--
+-- Constraints for table `purchases`
+--
+ALTER TABLE `purchases`
+  ADD CONSTRAINT `purchases_warehouse_fk` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouses` (`id`);
+
+--
+-- Constraints for table `sales`
+--
+ALTER TABLE `sales`
+  ADD CONSTRAINT `sales_warehouse_fk` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouses` (`id`);
+
+--
+-- Constraints for table `stock_transfers`
+--
+ALTER TABLE `stock_transfers`
+  ADD CONSTRAINT `stock_transfers_warehouse_fk` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouses` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
